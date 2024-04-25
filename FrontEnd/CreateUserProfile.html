@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile</title>
+    <style>
+        /* Your CSS styles here */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('pic2.png'); /* Specify the path to your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Ensure full height */
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: #82c1bf; /* Default background color */
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-pic"></div>
+        <form id="profileForm">
+            <div class="form-group">
+                <label for="profile-picture">Upload Picture:</label>
+                <input type="file" id="profile-picture">
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="birthday">Birthday:</label>
+                <input type="date" id="birthday">
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+<select id="location" name="location">
+    <option value="new_york">New York, NY</option>
+    <option value="los_angeles">Los Angeles, CA</option>
+    <option value="chicago">Chicago, IL</option>
+    <option value="houston">Houston, TX</option>
+    <option value="phoenix">Phoenix, AZ</option>
+    <option value="philadelphia">Philadelphia, PA</option>
+    <option value="san_antonio">San Antonio, TX</option>
+    <option value="san_diego">San Diego, CA</option>
+    <option value="dallas">Dallas, TX</option>
+    <option value="san_jose">San Jose, CA</option>
+    <option value="austin">Austin, TX</option>
+    <option value="jacksonville">Jacksonville, FL</option>
+    <option value="fort_worth">Fort Worth, TX</option>
+    <option value="columbus">Columbus, OH</option>
+    <option value="charlotte">Charlotte, NC</option>
+    <option value="san_francisco">San Francisco, CA</option>
+    <option value="indianapolis">Indianapolis, IN</option>
+    <option value="seattle">Seattle, WA</option>
+    <option value="denver">Denver, CO</option>
+    <option value="washington_dc">Washington, D.C.</option>
+    <option value="boston">Boston, MA</option>
+    <option value="el_paso">El Paso, TX</option>
+    <option value="nashville">Nashville, TN</option>
+    <option value="detroit">Detroit, MI</option>
+    <option value="oklahoma_city">Oklahoma City, OK</option>
+    <option value="portland">Portland, OR</option>
+    <option value="las_vegas">Las Vegas, NV</option>
+    <option value="memphis">Memphis, TN</option>
+    <option value="louisville">Louisville, KY</option>
+    <option value="baltimore">Baltimore, MD</option>
+    <option value="milwaukee">Milwaukee, WI</option>
+    <option value="albuquerque">Albuquerque, NM</option>
+    <option value="tucson">Tucson, AZ</option>
+    <option value="fresno">Fresno, CA</option>
+    <option value="sacramento">Sacramento, CA</option>
+    <option value="kansas_city">Kansas City, MO</option>
+    <option value="long_beach">Long Beach, CA</option>
+    <option value="mesa">Mesa, AZ</option>
+    <option value="atlanta">Atlanta, GA</option>
+    <option value="miami">Miami, FL</option>
+    <option value="colorado_springs">Colorado Springs, CO</option>
+    <option value="raleigh">Raleigh, NC</option>
+    <option value="omaha">Omaha, NE</option>
+    <option value="minneapolis">Minneapolis, MN</option>
+    <option value="tulsa">Tulsa, OK</option>
+    <option value="wichita">Wichita, KS</option>
+    <option value="new_orleans">New Orleans, LA</option>
+    <!-- Add other cities similarly -->
+</select>
+
+            </div>
+            <div class="form-group">
+                <label for="date-interval-start">Date Interval Start:</label>
+                <input type="date" id="date-interval-start">
+                <label for="date-interval-end">Date Interval End:</label>
+                <input type="date" id="date-interval-end">
+            </div>
+            <div class="form-group">
+                <label for="about-myself">About Myself:</label>
+                <textarea id="about-myself"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="looking-for">Looking For:</label>
+                <textarea id="looking-for"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="submitProfile()">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function submitProfile() {
+            const profileData = {
+                name: document.getElementById('name').value,
+                gender: document.getElementById('gender').value,
+                birthday: document.getElementById('birthday').value,
+                location: document.getElementById('location').value,
+                dateIntervalStart: document.getElementById('date-interval-start').value,
+                dateIntervalEnd: document.getElementById('date-interval-end').value,
+                aboutMyself: document.getElementById('about-myself').value,
+                lookingFor: document.getElementById('looking-for').value,
+            };
+
+            localStorage.setItem('profileData', JSON.stringify(profileData));
+            alert('Profile submitted and stored locally!');
+
+            window.location.href = 'HPafterSignin.html';
+
+        }
+    </script>
+</body>
+</html>

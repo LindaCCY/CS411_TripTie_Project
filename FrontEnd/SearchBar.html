@@ -1,0 +1,40 @@
+
+
+<div class="modal" id="searchModal">
+    <div class="modal-content" style="background-image: url('pic3.png'); background-size: cover;">
+        <span class="close-button" id="closeSearchModal">×</span>
+        <h2>Search for Travel Buddies</h2>
+        <form>
+            <label for="location">Location:</label>
+            <select id="location" name="location">
+                <option value="china">China</option>
+                <option value="united_states">United States</option>
+                <option value="mexico">Mexico</option>
+                <option value="paris">Paris</option>
+                <option value="italy">Italy</option>
+                <option value="switzerland">Switzerland</option>
+                <option value="iceland">Iceland</option>
+            </select><br><br>
+            
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date" name="start-date"><br><br>
+
+            <label for="end-date">End Date:</label>
+            <input type="date" id="end-date" name="end-date"><br><br>
+
+            
+            <fieldset>
+                <legend>Gender</legend>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label><br>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </fieldset><br>
+
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
