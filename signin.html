@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>signin</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      background: #006666;
+    }
+
+    h1 {
+      color: #FFF;
+      text-align: center;
+    }
+
+    .container {
+      margin: 100px auto;
+      width: 30%;
+    }
+
+    .form {
+      background: #FFF;
+      height: 300px;
+      width: 100%;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    label {
+      color: #000;
+      font-weight: bold;
+      font-size: 20px;
+      margin-left: 40px;
+    }
+
+    input {
+      text-align: left;
+      margin: 10px;
+    }
+
+    .input {
+      width: 80%;
+      height: 35px;
+      margin-left: 40px;
+    }
+
+    a {
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .submit {
+      display: inline-block;
+      margin-top: 0;
+      margin-left: 145px;
+      background: #000;
+      border: none;
+      color: #FFF;
+      height: 35px;
+      width: 100px;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    .left {
+      margin: 20px;
+    }
+
+    .right {
+      position: absolute;
+      right: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Log In</h1>
+
+    <div class="form">
+
+      <br>
+      <label for="username">UserName</label><br>
+      <input type="text" name="username" id="username" class="input" value="" placeholder="用户名admin"><br>
+      <label for="pwd">password</label><br>
+      <input type="password" name="" id="pwd" class="input" value="" placeholder="密码admin">
+      <button class="submit" onclick="submits()">log in</button>
+      <br>
+      <a href="signup.html" class="right">Create An Account</a>
+    </div>
+
+  </div>
+  <script>
+    function submits() {
+      var userName = document.getElementById("username").value;
+      var pwd = document.getElementById("pwd").value;
+      fetch('http://localhost:3000/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ password: pwd, username: userName })
+      })
+        .then(response => response.json())
+        .then(data => {
+
+          alert(data.message)
+          if (data.status) {
+            console.log('data', data);
+            localStorage.setItem("userinfo", JSON.stringify(data.data))
+            location.href = "./createProfile.html"
+          }
+        })
+
+    };
+  </script>
+</body>
+
+</html>
