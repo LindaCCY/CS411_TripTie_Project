@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="currencyAPI.css">
+<meta charset="UTF-8">
+<title>Currency Exchange</title>
+</head>
+<body>
+    <div class="exchange-container">
+        <div class="row">
+          <h1>Currency Exchange Rate</h1>
+        </div>
+        <div class="row">
+          <label for="fromCurrency">From: </label>
+          <input type="text" id="fromCurrency" placeholder="SGD">
+          <label for="toCurrency">To: </label>
+          <input type="text" id="toCurrency" placeholder="MYR">
+        </div>
+        <div class="button-row">
+          <button onclick="fetchExchangeRate()">Convert</button>
+        </div>
+        <div class="row">
+          <p>Exchange Rate: <span id="exchangeRate">Enter currencies and click convert.</span></p>
+        </div>
+      </div>
+
+<script>
+async function fetchExchangeRate() {
+    const fromCurrency = document.getElementById('fromCurrency').value;
+    const toCurrency = document.getElementById('toCurrency').value;
+    const url = `https://currency-exchange.p.rapidapi.com/exchange?from=${fromCurrency}&to=${toCurrency}&q=1.0`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '75fcbb9103msh3fe2f5f09145694p1ff8ddjsn3b42f8bcdc53',
+            'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
+        }
+    };
+
+    try {
+        const response = await fetch(url, options);
+        const result = await response.text();
+        document.getElementById('exchangeRate').innerText = result;
+    } catch (error) {
+        console.error('Failed to fetch exchange rate:', error);
+        document.getElementById('exchangeRate').innerText = 'Failed to load';
+    }
+}
+
+
+</script>
+</body>
+</html>
