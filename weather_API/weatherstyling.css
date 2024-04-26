@@ -1,0 +1,47 @@
+body {
+  background-color: #004d4d; /* Dark turquoise background */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: white; /* Text color for better contrast */
+}
+
+.weather-container {
+  max-width: 500px; /* Larger width for the container */
+  background: #f9f9f9;
+  padding: 40px; /* Larger padding for more space */
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  margin-top: 20px; /* Space from the top */
+  text-align: center;
+}
+
+.city-name,
+.weather-description,
+.temperature,
+.humidity {
+  color: #004d4d; /* Dark turquoise text color to match the body background */
+}
+
+.city-name {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.weather-description {
+  font-style: italic;
+}
+
+.temperature {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.humidity {
+  font-size: 16px;
+}
