@@ -22,7 +22,7 @@ router.post('/add', function (req, res, next) {
       // 注册成功，返回成功信息
       // 关闭数据库连接
       connection.end();
-      res.json({ message: "添加成功", status: true });
+      res.json({ message: "Success", status: true });
     }
   );
 });
@@ -46,7 +46,7 @@ router.post('/search', function (req, res, next) {
       // 注册成功，返回成功信息
       // 关闭数据库连接
       connection.end();
-      res.json({ message: "查询成功", data: results, status: true });
+      res.json({ message: "Success", data: results, status: true });
     }
   );
 });

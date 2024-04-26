@@ -76,7 +76,7 @@ router.post("/login", function (req, res, next) {
               }
               console.log("Disconnected from MySQL database");
             });
-            res.json({ message: "登陆成功", data: results[0], status: true });
+            res.json({ message: "Log in Successfully", data: results[0], status: true });
           }
         );
       } else {
@@ -86,7 +86,7 @@ router.post("/login", function (req, res, next) {
             return;
           }
           console.log("Disconnected from MySQL database");
-          res.json({ message: "登陆失败,账号或者密码不对" });
+          res.json({ message: "Log in Failed, wrong user name or password" });
         });
       }
     }
@@ -115,7 +115,7 @@ router.post("/register", async function (req, res, next) {
         if (results.length > 0) {
           // 关闭数据库连接
           connection.end();
-          return res.json({ message: "用户已存在", status: false });
+          return res.json({ message: "Account Exsit", status: false });
         }
         connection.query(
           "INSERT INTO user (username, password) VALUES (?, ?)",
@@ -129,7 +129,7 @@ router.post("/register", async function (req, res, next) {
             // 注册成功，返回成功信息
             // 关闭数据库连接
             connection.end();
-            res.json({ message: "注册成功", status: true });
+            res.json({ message: "Created Successfully", status: true });
           }
         );
       }
