@@ -1,73 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 
-<div class="modal" id="searchModal">
-    <div class="modal-content" style="background-image: url('pic1.png'); background-size: cover;">
-        <span class="close-button" id="closeSearchModal">×</span>
-        <h2>Search for Travel Buddies</h2>
-        <form>
+<body>
+    <div class="modal" id="searchModal">
+        <div class="modal-content" style="background-image: url('pic3.png'); background-size: cover;">
+            <span class="close-button" id="closeSearchModal">×</span>
+            <h2>Search for Travel Buddies</h2>
             <label for="location">Location:</label>
-            <label for="location">Location:</label>
-<select id="location" name="location">
-    <option value="new_york">New York, NY</option>
-    <option value="los_angeles">Los Angeles, CA</option>
-    <option value="chicago">Chicago, IL</option>
-    <option value="houston">Houston, TX</option>
-    <option value="phoenix">Phoenix, AZ</option>
-    <option value="philadelphia">Philadelphia, PA</option>
-    <option value="san_antonio">San Antonio, TX</option>
-    <option value="san_diego">San Diego, CA</option>
-    <option value="dallas">Dallas, TX</option>
-    <option value="san_jose">San Jose, CA</option>
-    <option value="austin">Austin, TX</option>
-    <option value="jacksonville">Jacksonville, FL</option>
-    <option value="fort_worth">Fort Worth, TX</option>
-    <option value="columbus">Columbus, OH</option>
-    <option value="charlotte">Charlotte, NC</option>
-    <option value="san_francisco">San Francisco, CA</option>
-    <option value="indianapolis">Indianapolis, IN</option>
-    <option value="seattle">Seattle, WA</option>
-    <option value="denver">Denver, CO</option>
-    <option value="washington_dc">Washington, D.C.</option>
-    <option value="boston">Boston, MA</option>
-    <option value="el_paso">El Paso, TX</option>
-    <option value="nashville">Nashville, TN</option>
-    <option value="detroit">Detroit, MI</option>
-    <option value="oklahoma_city">Oklahoma City, OK</option>
-    <option value="portland">Portland, OR</option>
-    <option value="las_vegas">Las Vegas, NV</option>
-    <option value="memphis">Memphis, TN</option>
-    <option value="louisville">Louisville, KY</option>
-    <option value="baltimore">Baltimore, MD</option>
-    <option value="milwaukee">Milwaukee, WI</option>
-    <option value="albuquerque">Albuquerque, NM</option>
-    <option value="tucson">Tucson, AZ</option>
-    <option value="fresno">Fresno, CA</option>
-    <option value="sacramento">Sacramento, CA</option>
-    <option value="kansas_city">Kansas City, MO</option>
-    <option value="long_beach">Long Beach, CA</option>
-    <option value="mesa">Mesa, AZ</option>
-    <option value="atlanta">Atlanta, GA</option>
-    <option value="miami">Miami, FL</option>
-    <option value="colorado_springs">Colorado Springs, CO</option>
-    <option value="raleigh">Raleigh, NC</option>
-    <option value="omaha">Omaha, NE</option>
-    <option value="minneapolis">Minneapolis, MN</option>
-    <option value="tulsa">Tulsa, OK</option>
-    <option value="wichita">Wichita, KS</option>
-    <option value="new_orleans">New Orleans, LA</option>
-    <!-- Add other cities similarly -->
-</select>
+            <select id="location_select" name="location">
+                <option value="new_york">New York, NY</option>
+                <option value="los_angeles">Los Angeles, CA</option>
+                <option value="chicago">Chicago, IL</option>
+                <option value="houston">Houston, TX</option>
+                <option value="phoenix">Phoenix, AZ</option>
+                <option value="philadelphia">Philadelphia, PA</option>
+                <option value="san_antonio">San Antonio, TX</option>
+                <option value="san_diego">San Diego, CA</option>
+                <option value="dallas">Dallas, TX</option>
+                <option value="san_jose">San Jose, CA</option>
+                <option value="austin">Austin, TX</option>
+                <option value="jacksonville">Jacksonville, FL</option>
+                <option value="fort_worth">Fort Worth, TX</option>
+                <option value="columbus">Columbus, OH</option>
+                <option value="charlotte">Charlotte, NC</option>
+                <option value="san_francisco">San Francisco, CA</option>
+                <option value="indianapolis">Indianapolis, IN</option>
+                <option value="seattle">Seattle, WA</option>
+                <option value="denver">Denver, CO</option>
+                <option value="washington_dc">Washington, D.C.</option>
+                <option value="boston">Boston, MA</option>
+                <option value="el_paso">El Paso, TX</option>
+                <option value="nashville">Nashville, TN</option>
+                <option value="detroit">Detroit, MI</option>
+                <option value="oklahoma_city">Oklahoma City, OK</option>
+                <option value="portland">Portland, OR</option>
+                <option value="las_vegas">Las Vegas, NV</option>
+                <option value="memphis">Memphis, TN</option>
+                <option value="louisville">Louisville, KY</option>
+                <option value="baltimore">Baltimore, MD</option>
+                <option value="milwaukee">Milwaukee, WI</option>
+                <option value="albuquerque">Albuquerque, NM</option>
+                <option value="tucson">Tucson, AZ</option>
+                <option value="fresno">Fresno, CA</option>
+                <option value="sacramento">Sacramento, CA</option>
+                <option value="kansas_city">Kansas City, MO</option>
+                <option value="long_beach">Long Beach, CA</option>
+                <option value="mesa">Mesa, AZ</option>
+                <option value="atlanta">Atlanta, GA</option>
+                <option value="miami">Miami, FL</option>
+                <option value="colorado_springs">Colorado Springs, CO</option>
+                <option value="raleigh">Raleigh, NC</option>
+                <option value="omaha">Omaha, NE</option>
+                <option value="minneapolis">Minneapolis, MN</option>
+                <option value="tulsa">Tulsa, OK</option>
+                <option value="wichita">Wichita, KS</option>
+                <option value="new_orleans">New Orleans, LA</option>
+                <!-- Add other cities similarly -->
+            </select>
+            <br>
 
-            
             <label for="start-date">Start Date:</label>
-            <input type="date" id="start-date" name="start-date"><br><br>
+            <input type="date" id="start_date" name="start_date"><br><br>
 
             <label for="end-date">End Date:</label>
-            <input type="date" id="end-date" name="end-date"><br><br>
+            <input type="date" id="end_date" name="end_date"><br><br>
 
-            
+
             <fieldset>
-                <legend>Gender</legend>
+                <legend id="gender">Gender</legend>
                 <input type="radio" id="male" name="gender" value="male">
                 <label for="male">Male</label><br>
                 <input type="radio" id="female" name="gender" value="female">
@@ -76,8 +82,48 @@
                 <label for="other">Other</label>
             </fieldset><br>
 
-            <button type="submit">Search</button>
-        </form>
-    </div>
-</div>
+            <button onclick="handSearch()">Search</button>
+            <hr />
+            <ul class="list">
 
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function handSearch() {
+            var selectedGender = document.querySelector('input[name="gender"]:checked').value;
+
+            const profileData = {
+                city_location: location_select.value,
+                date_interval_start: start_date.value,
+                date_interval_end: end_date.value,
+                gender: selectedGender
+            }
+
+            fetch('http://localhost:3000/info/search', {
+                method: 'post',
+                body: JSON.stringify(profileData),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+                .then(response => response.json()).then(res => {
+                    console.log(11111, res.data);
+                    let html = '';
+                    const list = document.querySelector(".list");
+                    for (let index = 0; index < res.data.length; index++) {
+                        const element = res.data[index];
+                        const [key, value] = Object.entries(element)
+                        for (const iterator of Object.entries(element)) {
+                            html += `<li>${iterator[0]}:  ${iterator[1]} </li>`
+                        }
+                    }
+                    list.innerHTML = html
+                })
+
+        }
+    </script>
+</body>
+
+</html>
