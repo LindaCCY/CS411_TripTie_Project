@@ -3,5 +3,5 @@ module.exports = {
     user: "root",
     password: "123456",
     database: "teamwork",
-    port: "3307"
+    port: "3306"
 }
