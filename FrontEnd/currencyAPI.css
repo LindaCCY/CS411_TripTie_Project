@@ -1,0 +1,54 @@
+body {
+    background-color: #004d4d; /* Dark turquoise background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white; /* Text color for better contrast */
+  }
+  
+  .exchange-container {
+    width: 100%; /* Take full width to center content */
+    max-width: 600px; /* Set a max-width for larger screens */
+    padding: 20px; /* Padding for space around content */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align items in the center for column flexbox */
+    text-align: center;
+  }
+  
+  .row {
+    width: 100%; /* Full width to align with the container */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0; /* Margin for spacing between rows */
+  }
+  
+  /* Style adjustments for input and button for better alignment */
+  input[type='text'], button {
+    margin: 5px; /* Margin for spacing */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    color: #004d4d;
+  }
+  button {
+    cursor: pointer;
+    background-color: #008080;
+    color: white;
+    border: none;
+  }
+  #exchangeRate {
+    font-size: 2px;
+    font-weight: bold;
+    color: #ffffff; /* White color for better contrast against dark background */
+  }
+  
