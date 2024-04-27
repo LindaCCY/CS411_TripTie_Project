@@ -1,66 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Profile</title>
     <style>
-        /* Your CSS styles here */
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-image: url('pic2.png');
-            /* Specify the path to your background image */
+            font-family: 'Arial', sans-serif;
+            background-image: url('pic2.png'); /* Use a clearer, simple background image or a gradient */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             height: 100vh;
-            /* Ensure full height */
         }
-
         .container {
-            margin: 20px auto;
+            margin: 50px auto;
             max-width: 600px;
             padding: 20px;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd; /* softer border color */
             border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8); /* semi-transparent white background */
+            box-shadow: 0 0 15px rgba(0,0,0,0.2); /* subtle shadow for depth */
         }
-
         .profile-pic {
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            margin: 0 auto 20px;
+            margin: 10px auto 20px;
             background: #82c1bf;
-            /* Default background color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
-
         .form-group {
             margin-bottom: 20px;
         }
-
         .form-group label {
             display: block;
             font-weight: bold;
+            margin-bottom: 5px;
         }
-
         .form-group input[type="text"],
+        .form-group input[type="email"],
         .form-group input[type="date"],
         .form-group select,
         .form-group textarea {
-            width: 100%;
-            padding: 10px;
+            width: 50%;
+            padding: 12px;
             border-radius: 5px;
             border: 1px solid #ccc;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            transition: border-color 0.3s;
         }
-
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
         .form-group textarea {
             resize: vertical;
             min-height: 100px;
         }
-
         .form-group button {
             padding: 10px 20px;
             background-color: #007bff;
@@ -68,21 +71,29 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
         }
     </style>
 </head>
-
 <body>
     <div class="container">
-        <div class="profile-pic"></div>
         <form id="profileForm">
             <div class="form-group">
                 <label for="profile-picture">Upload Picture:</label>
-                <input type="file" id="profile-picture">
+                <input type="file" id="profile-picture" accept="image/*" onchange="previewProfilePicture(event)">
+                <div class="profile-pic" id="profile-picture-preview"></div>
             </div>
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
             </div>
             <div class="form-group">
                 <label for="gender">Gender:</label>
@@ -99,6 +110,7 @@
             <div class="form-group">
                 <label for="location">Location:</label>
                 <select id="location" name="location">
+                    <option value="      ">      </option>
                     <option value="new_york">New York, NY</option>
                     <option value="los_angeles">Los Angeles, CA</option>
                     <option value="chicago">Chicago, IL</option>
@@ -169,12 +181,20 @@
             </div>
         </form>
     </div>
-
     <script>
+        function previewProfilePicture(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('profile-picture-preview');
+                output.style.backgroundImage = 'url(' + reader.result + ')';
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
         function submitProfile() {
-            const userinfo = JSON.parse(localStorage.getItem("userinfo") || "{}")
+            const userinfo = JSON.parse(localStorage.getItem("userinfo") || "{}");
             const profileData = {
                 name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
                 gender: document.getElementById('gender').value,
                 birthday: document.getElementById('birthday').value,
                 city_location: document.getElementById('location').value,
@@ -184,8 +204,6 @@
                 looking_for: document.getElementById('looking-for').value,
                 user_id: userinfo.id
             };
-
-
             fetch('http://localhost:3000/info/add', {
                 method: 'post',
                 body: JSON.stringify(profileData),
@@ -193,14 +211,12 @@
                     'Content-Type': 'application/json'
                 },
             })
-                .then(response => {
-                    localStorage.setItem('profileData', JSON.stringify(profileData));
-                    alert('Profile submitted and stored locally!');
-
-                    window.location.href = 'HPafterSignin.html';
-                })
+            .then(response => {
+                localStorage.setItem('profileData', JSON.stringify(profileData));
+                alert('Profile submitted and stored locally!');
+                window.location.href = 'HPafterSignin.html';
+            })
         }
     </script>
 </body>
-
 </html>
