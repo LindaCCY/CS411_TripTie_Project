@@ -47,7 +47,7 @@ body {
     border: none;
   }
   #exchangeRate {
-    font-size: 2px;
+    font-size: 25px;
     font-weight: bold;
     color: #ffffff; /* White color for better contrast against dark background */
   }
