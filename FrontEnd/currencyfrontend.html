@@ -1,53 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="currencyAPI.css">
-<meta charset="UTF-8">
-<title>Currency Exchange</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Exchange Rate</title>
+    <style>
+      body {
+        background-color: #004d4d; /* Dark turquoise background */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: Arial, sans-serif;
+        color: white; /* Text color for better contrast */
+      }
+      
+      .exchange-container {
+        width: 100%; /* Take full width to center content */
+        max-width: 600px; /* Set a max-width for larger screens */
+        padding: 20px; /* Padding for space around content */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Align items in the center for column flexbox */
+        text-align: center;
+      }
+      
+      .row {
+        width: 100%; /* Full width to align with the container */
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0; /* Margin for spacing between rows */
+      }
+      
+      /* Style adjustments for input and button for better alignment */
+      input[type='text'], button {
+        margin: 5px; /* Margin for spacing */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: white;
+        color: #004d4d;
+      }
+      button {
+        cursor: pointer;
+        background-color: #008080;
+        color: white;
+        border: none;
+      }
+      #exchangeRate {
+        font-size: 16px;
+        font-weight: bold;
+        color: #ffffff; /* White color for better contrast against dark background */
+      }
+      
+    
+    </style>
 </head>
 <body>
     <div class="exchange-container">
-        <div class="row">
-          <h1>Currency Exchange Rate</h1>
+        <h1>Currency Exchange Rate</h1>
+        <div>
+            <label for="fromCurrency">From:</label>
+            <input type="text" id="fromCurrency" placeholder="SGD">
         </div>
-        <div class="row">
-          <label for="fromCurrency">From: </label>
-          <input type="text" id="fromCurrency" placeholder="SGD">
-          <label for="toCurrency">To: </label>
-          <input type="text" id="toCurrency" placeholder="MYR">
+        <div>
+            <label for="toCurrency">To:</label>
+            <input type="text" id="toCurrency" placeholder="MYR">
         </div>
-        <div class="button-row">
-          <button onclick="fetchExchangeRate()">Convert</button>
+        <button id="convertBtn">Convert</button>
+        <div id="resultContainer">
+            <p>Exchange Rate: <span id="exchangeRate">Enter currencies and click convert.</span></p>
         </div>
-        <div class="row">
-          <p>Exchange Rate: <span id="exchangeRate">Enter currencies and click convert.</span></p>
-        </div>
-      </div>
+    </div>
 
-<script>
-async function fetchExchangeRate() {
-    const fromCurrency = document.getElementById('fromCurrency').value;
-    const toCurrency = document.getElementById('toCurrency').value;
-    const url = `https://currency-exchange.p.rapidapi.com/exchange?from=${fromCurrency}&to=${toCurrency}&q=1.0`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '75fcbb9103msh3fe2f5f09145694p1ff8ddjsn3b42f8bcdc53',
-            'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
+    <script>
+        document.getElementById('convertBtn').addEventListener('click', function() {
+            const fromCurrency = document.getElementById('fromCurrency').value.toUpperCase();
+            const toCurrency = document.getElementById('toCurrency').value.toUpperCase();
+
+            if (fromCurrency.length === 3 && toCurrency.length === 3) {
+                getExchangeRate(fromCurrency, toCurrency);
+            } else {
+                alert('Please enter valid 3-letter currency codes.');
+            }
+        });
+
+        function getExchangeRate(fromCurrency, toCurrency) {
+            const apiKey = '3a7cc557258682f0ad0c08e1112165fb';
+            // Ensure to use HTTPS if your plan supports it
+            const url = `http://data.fixer.io/api/latest?access_key=${apiKey}&symbols=${fromCurrency},${toCurrency}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const rate = data.rates[toCurrency] / data.rates[fromCurrency];
+                        document.getElementById('exchangeRate').textContent = `1 ${fromCurrency} = ${rate.toFixed(4)} ${toCurrency}`;
+                    } else {
+                        document.getElementById('exchangeRate').textContent = 'Error retrieving rate. Please try again.';
+                    }
+                })
+                .catch(error => {
+                    console.error('Fetch Error:', error);
+                    document.getElementById('exchangeRate').textContent = 'Network error. Please try again.';
+                });
         }
-    };
-
-    try {
-        const response = await fetch(url, options);
-        const result = await response.text();
-        document.getElementById('exchangeRate').innerText = result;
-    } catch (error) {
-        console.error('Failed to fetch exchange rate:', error);
-        document.getElementById('exchangeRate').innerText = 'Failed to load';
-    }
-}
-
-
-</script>
+    </script>
 </body>
 </html>

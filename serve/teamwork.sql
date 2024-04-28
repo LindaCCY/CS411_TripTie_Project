@@ -11,7 +11,7 @@
  Target Server Version : 80030 (8.0.30)
  File Encoding         : 65001
 
- Date: 25/04/2024 20:42:56
+ Date: 26/04/2024 21:20:34
 */
 
 SET NAMES utf8mb4;
@@ -30,8 +30,9 @@ CREATE TABLE `info` (
   `looking_for` varchar(255) DEFAULT NULL,
   `id` int NOT NULL AUTO_INCREMENT,
   `user_id` int DEFAULT NULL,
+  `city_location` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Table structure for user
