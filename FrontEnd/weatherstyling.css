@@ -1,47 +1,75 @@
 body {
-  background-color: #004d4d; /* Dark turquoise background */
+  background: url('pic4.png') no-repeat center center fixed; /* Update this URL */
+  background-size: cover;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  font-family: Arial, sans-serif;
-  color: white; /* Text color for better contrast */
+  font-family: 'Helvetica Neue', sans-serif;
+  color: white;
 }
 
+/* Styles for the TripTie button */
+#tripTieButton {
+  position: absolute;
+  top: 20px; /* Distance from the top of the page */
+  left: 20px; /* Distance from the left side of the page */
+  font-size: 20px; /* Larger font size for better visibility */
+  padding: 10px 20px; /* Padding around the text */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #004d4d; /* Dark turquoise, matching the theme */
+  color: white; /* Text color */
+  border: none; /* No border */
+  cursor: pointer; /* Cursor indicates it's clickable */
+}
+
+#tripTieButton:hover {
+  background-color: #003838; /* Slightly darker on hover for visual feedback */
+}
+
+
 .weather-container {
-  max-width: 500px; /* Larger width for the container */
-  background: #f9f9f9;
-  padding: 40px; /* Larger padding for more space */
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  margin-top: 20px; /* Space from the top */
+  width: 80%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
   text-align: center;
 }
 
-.city-name,
-.weather-description,
-.temperature,
-.humidity {
-  color: #004d4d; /* Dark turquoise text color to match the body background */
+.city-name, .weather-description, .temperature, .humidity {
+  color: #005566; /* Adjusted for softer contrast */
 }
 
 .city-name {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 28px;
+  margin-bottom: 12px;
 }
 
 .weather-description {
+  font-size: 18px;
   font-style: italic;
 }
 
 .temperature {
-  font-size: 30px;
+  font-size: 36px;
   font-weight: bold;
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
 .humidity {
-  font-size: 16px;
+  font-size: 18px;
+}
+
+/* Additional responsiveness */
+@media (max-width: 600px) {
+  .weather-container {
+    padding: 10px;
+    margin: 10px;
+    font-size: 90%;
+  }
 }
