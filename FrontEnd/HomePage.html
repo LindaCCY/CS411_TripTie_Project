@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>TripTie - Connect with Travel Buddies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            color: #333; /* Updated text color for better readability */
+            background: #f7f7f7; /* Light background for the body */
         }
         .container {
             position: relative;
@@ -28,69 +31,121 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(255, 255, 255, 0.95); /* Semi-transparent background for the header */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow to header for depth */
         }
+        .hero {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            color: #333;
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-top: 1rem;
+        }
+
         .logo {
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ff5252; /* Use the brand color for the logo */
+        }
+
+        .logo:hover {
+            transform: translateY(-2px); /* Logo raises up when hovered */
         }
         .menu {
             display: flex;
         }
         .menu a {
-            color: white;
+            color: #333;
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 12px 20px;
             margin-left: 10px;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            border: 1px solid transparent; /* Adds a transparent border */
         }
         .menu a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: #eaeaea; /* Subtle hover color */
+            border-color: #ddd; /* Solid border on hover */
+            transform: translateY(-2px); /* Raise the link slightly on hover */
         }
         .modal {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
-            display: none;
             align-items: center;
             justify-content: center;
             z-index: 2;
         }
         .modal-content {
             background-color: white;
-            padding: 20px;
+            padding: 40px;
             border-radius: 8px;
             width: 80%;
             max-width: 500px;
             text-align: center;
+            color: #333;
+            font-weight: bold;
+            transform: scale(0.9); /* Start slightly smaller */
+            animation: modalIn 0.3s forwards; /* Animation to scale the modal in */
         }
         .close-button {
             cursor: pointer;
-            padding: 10px;
-            background-color: red;
+            padding: 8px 16px;
+            background-color: #ff5252;
             color: white;
             border: none;
             border-radius: 5px;
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: -40px; /* Position above the modal */
+            right: -40px; /* Position to the right of the modal */
+            transition: transform 0.3s ease;
+        }
+        .close-button:hover {
+            transform: scale(1.1); /* Enlarge button on hover */
+        }
+        @keyframes modalIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="hero">
+            <h1>TripTie</h1>
+            <p>Find travel companions and create unforgettable journeys.</p>
+        </div>
         <div class="header">
-            <div class="logo">Home</div>
+            <div class="logo">TripTie</div>
             <div class="menu">
+                <!-- Links Updated -->
                 <a href="currencyfrontend.html">Currency</a>
                 <a href="weatherAPIfrontend.html">Weather</a>
                 <a href="#" id="aboutBtn">About</a>
                 <a href="SearchBar.html">Search</a>
-                <a href="signup.html">Sign up</a> 
+                <a href="signup.html">Sign up</a>
                 <a href="signin.html">Log in</a>
             </div>
         </div>
